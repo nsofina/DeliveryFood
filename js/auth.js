@@ -39,14 +39,24 @@ closeAuth.addEventListener('click', () => {
 
 logInForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
+    if (inputLogin.value == "" && inputPassword.value == "") {
+        alert('Введите логин и пароль');
+    }
+    else if (inputLogin.value == "") {
+        alert('Введите логин');
+    }
+    else if (inputPassword.value == "") {
+        alert('Введите пароль');
+    }
+    else {
     const user = {
         login: inputLogin.value,
         password: inputPassword.value,
-    }
+    };
 
     localStorage.setItem('user', JSON.stringify(user));
     login(user);
+    }
 })
 
 if (localStorage.getItem('user')) {
